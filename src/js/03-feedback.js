@@ -39,10 +39,14 @@ window.addEventListener('load', loadFeedbackFromLocalStorage);
 
 form.addEventListener('submit', event => {
   event.preventDefault();
-  const feedbackData = {
-    email: emailInput.value,
-    message: messageInput.value,
-  };
-  console.log(feedbackData);
-  clearFeedbackAndLocalStorage();
+  if (emailInput.value.trim() === '' || messageInput.value.trim() === '') {
+    alert('Будь ласка, заповніть всі поля форми!');
+  } else {
+    const feedbackData = {
+      email: emailInput.value,
+      message: messageInput.value,
+    };
+    console.log(feedbackData);
+    clearFeedbackAndLocalStorage();
+  }
 });
